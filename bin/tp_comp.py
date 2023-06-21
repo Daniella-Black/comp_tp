@@ -9,13 +9,13 @@ my_parser.add_argument('-tumour_sample_platekey',
                        type=str,
                        help='sample')
 my_parser.add_argument('-v1_tumour_sv_vcf',
-                       type=file,
+                       type=str,
                        help='v1_tumour_sv_vcf')
 my_parser.add_argument('-v2_somatic_cnv_vcf',
-                       type=file,
+                       type=str,
                        help='v2_somatic_cnv_vcf')
 my_parser.add_argument('-cancer_analysis_table',
-                       type=file,
+                       type=str,
                        help='cancer_analysis_table')
 args = my_parser.parse_args()
 
