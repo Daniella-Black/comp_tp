@@ -28,9 +28,13 @@ v2_somatic_cnv_vcf = args.v2_somatic_cnv_vcf
 v2_somatic_sv_vcf = args.v2_somatic_sv_vcf
 cancer_analysis_table = args.cancer_analysis_table
 
-
-##read in the vcf files and pull out tp
 tp = {}
+
+can_a = can_a[can_a['tumour_sample_platekey']==sample]
+can_a = can_a.reset_index(drop=True)
+tp['cancer_analysis_v1'] = can_a['tumour_purity'][0]
+##read in the vcf files and pull out tp
+
 
 file_list = [v1_tumour_sv_vcf, v2_somatic_cnv_vcf,v2_somatic_sv_vcf]
 file_list_names = ['v1_tumour_sv_vcf', 'v2_somatic_cnv_vcf', 'v2_somatic_sv_vcf']
