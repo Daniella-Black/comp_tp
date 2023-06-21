@@ -26,6 +26,7 @@ cancer_analysis_table = args.cancer_analysis_table
 
 tp = {}
 
+can_a = pd.read_csv(cancer_analysis_table,sep='\t')
 can_a = can_a[can_a['tumour_sample_platekey']==sample]
 can_a = can_a.reset_index(drop=True)
 tp['cancer_analysis_v1'] = can_a['tumour_purity'][0]
