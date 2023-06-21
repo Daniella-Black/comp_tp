@@ -25,6 +25,6 @@ process  CloudOS_MTR_input{
     
     script:
     """
-    tp_comp.py '$tumour_sample_platekey' '$v1_tumour_sv_vcf' '$v2_somatic_cnv_vcf' '$cancer_analysis_table'
+    tp_comp.py -tumour_sample_platekey '$tumour_sample_platekey' -v1_tumour_sv_vcf '$v1_tumour_sv_vcf' -v2_somatic_cnv_vcf '$v2_somatic_cnv_vcf' -cancer_analysis_table '$cancer_analysis_table'
     """ 
 }
