@@ -41,7 +41,7 @@ for file in range(len(file_list)):
   lines= f.readlines()
   f.close()
   lines = [i.decode('utf-8') for i in lines]
-  matching = [s for s in lines if any(xs in s for xs in ['TumourPurity'])]
+  matching = [s for s in lines if any(xs in s for xs in ['TumorPurity'])]
   if len(matching) >0:
     tp[file_list_names[file]] = float(re.findall("\d+\.\d+", matching[0])[0])
   else:
