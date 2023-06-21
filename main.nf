@@ -4,7 +4,7 @@ Channel
     .fromPath(params.inputlist)
     .ifEmpty {exit 1, "Cannot find input file : ${params.inputlist}"}
     .splitCsv(skip:1)
-    .map{tumour_sample_platekey, v1_tumour_sv_vcf, v2_somatic_cnv_vcf, cancer_analysis_table -> [tumour_sample_platekey, file(v1_tumour_sv_vcf), file(v2_somatic_cnv_vcf), file(cancer_analysis_table)]}
+    .map{tumour_sample_platekey, v1_tumour_sv_vcf, v2_somatic_cnv_vcf,v2_somatic_sv_vcf, cancer_analysis_table -> [tumour_sample_platekey, file(v1_tumour_sv_vcf), file(v2_somatic_cnv_vcf), file(v2_somatic_sv_vcf),file(cancer_analysis_table)]}
     .set{ ch_input }
 
 
@@ -18,13 +18,13 @@ process  CloudOS_MTR_input{
     publishDir "${params.outdir}/$tumour_sample_platekey", mode: 'copy'
     
     input:
-    set val(tumour_sample_platekey), file(v1_tumour_sv_vcf), file(v2_somatic_cnv_vcf), file(cancer_analysis_table) from ch_input
+    set val(tumour_sample_platekey), file(v1_tumour_sv_vcf), file(v2_somatic_cnv_vcf),  file(v2_somatic_sv_vcf), file(cancer_analysis_table) from ch_input
 
     output:
     file "*_tp_comp.csv"
     
     script:
     """
-    tp_comp.py '$tumour_sample_platekey' '$v1_tumour_sv_vcf' '$v2_somatic_cnv_vcf' '$cancer_analysis_table'
+    tp_comp.py '$tumour_sample_platekey' '$v1_tumour_sv_vcf' '$v2_somatic_cnv_vcf' '$v2_somatic_sv_vcf' '$cancer_analysis_table'
     """ 
 }
