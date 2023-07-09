@@ -13,7 +13,6 @@ process  CloudOS_MTR_input{
     maxForks 900
     errorStrategy 'ignore'
     maxRetries 3
-    container = 'public.ecr.aws/b0q1v7i3/pydocker:latest' 
     tag"$tumour_sample_platekey"
     publishDir "${params.outdir}/$tumour_sample_platekey", mode: 'copy'
     
